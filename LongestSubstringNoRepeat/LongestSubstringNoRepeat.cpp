@@ -39,6 +39,14 @@ int LongestSubstringWithoutRepeat(const std::string& str)
 
 int main()
 {
-    std::string s = "heheloworlds";
-    std::cout << "Longest substring length is " << LongestSubstringWithoutRepeat(s) << std::endl;
+    while (true)
+    {
+        std::cout << "Please enter a string (\"q\" to exit): ";
+        std::string s;
+        std::cin >> s;
+        if (s == "q" || s == "Q")
+            break;
+
+        std::cout << "Longest substring length is " << LongestSubstringWithoutRepeat(s) << std::endl;
+    }
 }
