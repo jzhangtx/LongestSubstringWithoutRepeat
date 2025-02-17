@@ -6,32 +6,29 @@
 
 int GetLongestSubstring(const std::string& str, size_t index)
 {
-    int count = 1;
-    for (size_t i = index+1; i < str.length(); ++i)
+    size_t i;
+    for (i = index+1; i < str.length(); ++i)
     {
-        bool repeat = false;
         for (size_t j = index; j < i; ++j)
         {
             if (str[j] == str[i])
             {
-                repeat = true;
-                break;
+                return static_cast<int>(i - index);
             }
         }
-        if (repeat)
-            break;
-        count++;
     }
 
-    return count;
+    return static_cast<int>(i - index);
 }
 
 int LongestSubstringWithoutRepeat(const std::string& str)
 {
     int count = 0;
-    for (size_t i = 0; i < str.size(); ++i)
+    for (size_t i = 0; i < str.size(); )
     {
-        count = std::max(count, GetLongestSubstring(str, i));
+        int l = GetLongestSubstring(str, i);
+        count = std::max(count, l);
+        i += l;
     }
 
     return count;
